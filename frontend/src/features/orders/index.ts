@@ -1,0 +1,5 @@
+export { default as CheckoutPage } from './pages/CheckoutPage'
+export { default as MisPedidosPage } from './pages/MisPedidosPage'
+export { default as PedidoDetallePage } from './pages/PedidoDetallePage'
+export { default as AdminPedidosPage } from './pages/AdminPedidosPage'
+export { default as AdminResumenPage } from './pages/AdminResumenPage'

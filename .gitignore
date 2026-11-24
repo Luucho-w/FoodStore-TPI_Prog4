@@ -1,0 +1,35 @@
+
+# Variables de entorno y credenciales
+.env
+.env.*
+
+# Archivos de ejemplo que sí deben subirse
+!.env.example
+
+# Entornos virtuales de Python
+.venv/
+venv/
+
+# Dependencias de Node
+node_modules/
+
+# Archivos temporales de Python
+__pycache__/
+*.py[cod]
+
+# Cachés
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.vite/
+
+# Archivos generados
+dist/
+build/
+
+# Logs
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

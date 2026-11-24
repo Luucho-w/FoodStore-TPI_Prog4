@@ -1,0 +1,78 @@
+
+@base_url = http://127.0.0.1:8000
+
+### Listar todas las categorías
+GET {{base_url}}/categorias/
+
+### Crear una categoría
+POST {{base_url}}/categorias/
+Content-Type: application/json
+
+{
+  "nombre": "Accesorios",
+  "descripcion": "Accesorios para computadoras y otros dispositivos"
+}
+
+### Consultar una categoría por ID
+GET {{base_url}}/categorias/1
+
+### Actualizar una categoría
+PUT {{base_url}}/categorias/1
+Content-Type: application/json
+
+{
+  "nombre": "Accesorios actualizados",
+  "descripcion": "Accesorios para computadoras y periféricos"
+}
+
+### Eliminar una categoría
+DELETE {{base_url}}/categorias/1
+
+### Listar todos los productos
+GET {{base_url}}/productos/
+
+### Crear un producto
+POST {{base_url}}/productos/
+Content-Type: application/json
+
+{
+  "nombre": "Mouse gamer",
+  "descripcion": "Mouse para juegos",
+  "precio_base": "25000",
+  "imagen_url": [],
+  "disponible": true
+}
+
+### Consultar un producto por ID
+GET {{base_url}}/productos/1
+
+### Actualizar un producto
+PUT {{base_url}}/productos/1
+Content-Type: application/json
+
+{
+  "nombre": "Mouse gamer actualizado",
+  "descripcion": "Mouse para juegos con mejoras",
+  "precio_base": "30000",
+  "imagen_url": [],
+  "disponible": true
+}
+
+### Eliminar un producto
+DELETE {{base_url}}/productos/1
+
+### Listar relaciones producto-categoría
+GET {{base_url}}/producto-categorias/
+
+### Crear relación producto-categoría
+POST {{base_url}}/producto-categorias/
+Content-Type: application/json
+
+{
+  "producto_id": 1,
+  "categoria_id": 1
+}
+
+### Eliminar relación producto-categoría
+DELETE {{base_url}}/producto-categorias/1/1
+

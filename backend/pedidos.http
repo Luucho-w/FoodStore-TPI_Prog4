@@ -1,0 +1,59 @@
+### 1. Listar pedidos
+GET http://127.0.0.1:8000/pedidos/
+
+### 2. Obtener un pedido
+GET http://127.0.0.1:8000/pedidos/1
+
+### 3. Crear un pedido válido
+POST http://127.0.0.1:8000/pedidos/
+Content-Type: application/json
+
+{
+  "detalles": [
+    {
+      "producto_id": 6,
+      "cantidad": 2
+    }
+  ]
+}
+
+### 4. Crear pedido con productos repetidos (422)
+POST http://127.0.0.1:8000/pedidos/
+Content-Type: application/json
+
+{
+  "detalles": [
+    {
+      "producto_id": 6,
+      "cantidad": 2
+    },
+    {
+      "producto_id": 6,
+      "cantidad": 1
+    }
+  ]
+}
+
+### 5. Crear pedido con producto inexistente (404)
+POST http://127.0.0.1:8000/pedidos/
+Content-Type: application/json
+
+{
+  "detalles": [
+    {
+      "producto_id": 999999,
+      "cantidad": 1
+    }
+  ]
+}
+
+### 6. Actualizar estado
+PUT http://127.0.0.1:8000/pedidos/1
+Content-Type: application/json
+
+{
+  "estado": "CONFIRMADO"
+}
+
+### 7. Eliminar pedido (borrado lógico)
+DELETE http://127.0.0.1:8000/pedidos/1
