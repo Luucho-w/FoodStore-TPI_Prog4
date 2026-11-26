@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react'
 import { useForm } from '@tanstack/react-form'
 import { useCategories } from '@/features/categories'
@@ -56,10 +55,16 @@ function ProductoModal({
 
   if (!abierto) return null
 
+  const inputClass =
+    'w-full rounded-lg border border-slate-300 bg-white p-2 text-slate-900 placeholder:text-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-400'
+
+  const labelClass =
+    'mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300'
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="w-full max-w-xl rounded-2xl bg-white p-6 shadow-xl">
-        <h2 className="mb-6 text-xl font-bold text-slate-800">
+      <div className="w-full max-w-xl rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900">
+        <h2 className="mb-6 text-xl font-bold text-slate-800 dark:text-white">
           {producto ? 'Editar producto' : 'Nuevo producto'}
         </h2>
 
@@ -74,11 +79,9 @@ function ProductoModal({
           <form.Field name="categoria_id">
             {(field) => (
               <div>
-                <label className="mb-1 block text-sm font-medium">
-                  Categoría
-                </label>
+                <label className={labelClass}>Categoría</label>
                 <select
-                  className="w-full rounded-lg border border-slate-300 p-2"
+                  className={inputClass}
                   value={field.state.value}
                   onChange={(e) => field.handleChange(Number(e.target.value))}
                   required
@@ -101,9 +104,9 @@ function ProductoModal({
           <form.Field name="nombre">
             {(field) => (
               <div>
-                <label className="mb-1 block text-sm font-medium">Nombre</label>
+                <label className={labelClass}>Nombre</label>
                 <input
-                  className="w-full rounded-lg border border-slate-300 p-2"
+                  className={inputClass}
                   value={field.state.value}
                   onChange={(e) => field.handleChange(e.target.value)}
                   required
@@ -117,11 +120,9 @@ function ProductoModal({
           <form.Field name="descripcion">
             {(field) => (
               <div>
-                <label className="mb-1 block text-sm font-medium">
-                  Descripción
-                </label>
+                <label className={labelClass}>Descripción</label>
                 <textarea
-                  className="w-full rounded-lg border border-slate-300 p-2"
+                  className={inputClass}
                   value={field.state.value}
                   onChange={(e) => field.handleChange(e.target.value)}
                   rows={3}
@@ -133,14 +134,12 @@ function ProductoModal({
           <form.Field name="precio_base">
             {(field) => (
               <div>
-                <label className="mb-1 block text-sm font-medium">
-                  Precio base
-                </label>
+                <label className={labelClass}>Precio base</label>
                 <input
                   type="number"
                   min="0.01"
                   step="0.01"
-                  className="w-full rounded-lg border border-slate-300 p-2"
+                  className={inputClass}
                   value={field.state.value}
                   onChange={(e) => field.handleChange(e.target.value)}
                   required
@@ -153,18 +152,14 @@ function ProductoModal({
           <form.Field name="stock">
             {(field) => (
               <div>
-                <label className="mb-1 block text-sm font-medium">
-                  Stock
-                </label>
+                <label className={labelClass}>Stock</label>
                 <input
                   type="number"
                   min="0"
                   step="1"
-                  className="w-full rounded-lg border border-slate-300 p-2"
+                  className={inputClass}
                   value={field.state.value}
-                  onChange={(e) =>
-                    field.handleChange(Number(e.target.value))
-                  }
+                  onChange={(e) => field.handleChange(Number(e.target.value))}
                   required
                 />
               </div>
@@ -174,12 +169,10 @@ function ProductoModal({
           <form.Field name="imagen_url">
             {(field) => (
               <div>
-                <label className="mb-1 block text-sm font-medium">
-                  URL de imagen
-                </label>
+                <label className={labelClass}>URL de imagen</label>
                 <input
                   type="url"
-                  className="w-full rounded-lg border border-slate-300 p-2"
+                  className={inputClass}
                   value={field.state.value}
                   onChange={(e) => field.handleChange(e.target.value)}
                   placeholder="https://ejemplo.com/imagen.jpg"
@@ -190,7 +183,7 @@ function ProductoModal({
 
           <form.Field name="disponible">
             {(field) => (
-              <label className="flex items-center gap-2 text-sm">
+              <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
                 <input
                   type="checkbox"
                   checked={field.state.value}
@@ -205,7 +198,7 @@ function ProductoModal({
             <button
               type="button"
               onClick={onCerrar}
-              className="rounded-lg border border-slate-300 px-4 py-2"
+              className="rounded-lg border border-slate-300 px-4 py-2 text-slate-700 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
             >
               Cancelar
             </button>

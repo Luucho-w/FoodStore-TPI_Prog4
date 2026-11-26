@@ -56,12 +56,12 @@ function RegisterPage() {
   })
 
   return (
-    <section className="mx-auto max-w-lg rounded-2xl bg-white p-8 shadow-sm">
-      <h1 className="mb-2 text-3xl font-bold text-slate-900">
+    <section className="mx-auto max-w-lg rounded-2xl border border-slate-200 bg-white p-8 text-slate-800 shadow-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100">
+      <h1 className="mb-2 text-3xl font-bold text-slate-900 dark:text-white">
         Crear cuenta
       </h1>
 
-      <p className="mb-6 text-sm text-slate-600">
+      <p className="mb-6 text-sm text-slate-600 dark:text-slate-400">
         Completá tus datos para registrarte.
       </p>
 
@@ -76,11 +76,11 @@ function RegisterPage() {
         <form.Field name="username">
           {(field) => (
             <div>
-              <label className="mb-1 block text-sm font-medium">
+              <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-200">
                 Nombre de usuario
               </label>
               <input
-                className="w-full rounded-lg border border-slate-300 p-3"
+                className="w-full rounded-lg border border-slate-300 bg-white p-3 text-slate-900 outline-none focus:border-indigo-500 dark:border-slate-600 dark:bg-slate-900 dark:text-white"
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
                 required
@@ -94,11 +94,11 @@ function RegisterPage() {
         <form.Field name="full_name">
           {(field) => (
             <div>
-              <label className="mb-1 block text-sm font-medium">
+              <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-200">
                 Nombre completo
               </label>
               <input
-                className="w-full rounded-lg border border-slate-300 p-3"
+                className="w-full rounded-lg border border-slate-300 bg-white p-3 text-slate-900 outline-none focus:border-indigo-500 dark:border-slate-600 dark:bg-slate-900 dark:text-white"
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
                 required
@@ -111,12 +111,12 @@ function RegisterPage() {
         <form.Field name="email">
           {(field) => (
             <div>
-              <label className="mb-1 block text-sm font-medium">
+              <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-200">
                 Correo electrónico
               </label>
               <input
                 type="email"
-                className="w-full rounded-lg border border-slate-300 p-3"
+                className="w-full rounded-lg border border-slate-300 bg-white p-3 text-slate-900 outline-none focus:border-indigo-500 dark:border-slate-600 dark:bg-slate-900 dark:text-white"
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
                 required
@@ -128,19 +128,19 @@ function RegisterPage() {
         <form.Field name="password">
           {(field) => (
             <div>
-              <label className="mb-1 block text-sm font-medium">
+              <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-200">
                 Contraseña
               </label>
               <input
                 type="password"
-                className="w-full rounded-lg border border-slate-300 p-3"
+                className="w-full rounded-lg border border-slate-300 bg-white p-3 text-slate-900 outline-none focus:border-indigo-500 dark:border-slate-600 dark:bg-slate-900 dark:text-white"
                 value={field.state.value}
                 onChange={(e) => field.handleChange(e.target.value)}
                 required
                 minLength={8}
                 maxLength={128}
               />
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
                 Debe tener al menos 8 caracteres.
               </p>
             </div>
@@ -156,11 +156,11 @@ function RegisterPage() {
         </button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-slate-600">
+      <p className="mt-6 text-center text-sm text-slate-600 dark:text-slate-400">
         ¿Ya tenés una cuenta?{' '}
         <Link
           to="/login"
-          className="font-semibold text-indigo-600 hover:underline"
+          className="font-semibold text-indigo-600 hover:underline dark:text-indigo-400"
         >
           Iniciar sesión
         </Link>

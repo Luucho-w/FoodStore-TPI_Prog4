@@ -52,8 +52,8 @@ function ProductoList({
         <span
           className={`rounded-full px-3 py-1 text-xs font-semibold ${
             row.original.activo
-              ? 'bg-green-100 text-green-700'
-              : 'bg-red-100 text-red-700'
+              ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
+              : 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300'
           }`}
         >
           {row.original.activo ? 'Activo' : 'Desactivado'}
@@ -73,7 +73,7 @@ function ProductoList({
             type="button"
             onClick={() => onEditar(row.original)}
             disabled={!row.original.activo}
-            className="rounded-lg bg-indigo-100 px-3 py-1 text-sm text-indigo-700 hover:bg-indigo-200 disabled:opacity-40"
+            className="rounded-lg bg-indigo-100 px-3 py-1 text-sm text-indigo-700 hover:bg-indigo-200 disabled:opacity-40 dark:bg-indigo-900/40 dark:text-indigo-300 dark:hover:bg-indigo-900/70"
           >
             Editar
           </button>
@@ -90,7 +90,7 @@ function ProductoList({
                 onEliminar(row.original.id)
               }
             }}
-            className="rounded-lg bg-red-100 px-3 py-1 text-sm text-red-700 hover:bg-red-200 disabled:opacity-40"
+            className="rounded-lg bg-red-100 px-3 py-1 text-sm text-red-700 hover:bg-red-200 disabled:opacity-40 dark:bg-red-900/40 dark:text-red-300 dark:hover:bg-red-900/70"
           >
             Desactivar
           </button>
@@ -112,17 +112,17 @@ function ProductoList({
 
   if (productos.length === 0) {
     return (
-      <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-slate-500">
+      <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400">
         Todavía no hay productos registrados.
       </div>
     )
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
       <div className="overflow-x-auto">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-slate-100 text-slate-700">
+        <table className="w-full text-left text-sm text-slate-700 dark:text-slate-200">
+          <thead className="bg-slate-100 text-slate-700 dark:bg-slate-900 dark:text-slate-200">
             {tabla.getHeaderGroups().map((grupo) => (
               <tr key={grupo.id}>
                 {grupo.headers.map((header) => (
@@ -150,9 +150,12 @@ function ProductoList({
             ))}
           </thead>
 
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
             {tabla.getRowModel().rows.map((fila) => (
-              <tr key={fila.id} className="hover:bg-slate-50">
+              <tr
+                key={fila.id}
+                className="hover:bg-slate-50 dark:hover:bg-slate-700/50"
+              >
                 {fila.getVisibleCells().map((celda) => (
                   <td key={celda.id} className="px-4 py-3">
                     {flexRender(
@@ -167,8 +170,8 @@ function ProductoList({
         </table>
       </div>
 
-      <div className="flex items-center justify-between border-t border-slate-200 px-4 py-3">
-        <span className="text-sm text-slate-500">
+      <div className="flex items-center justify-between border-t border-slate-200 px-4 py-3 dark:border-slate-700">
+        <span className="text-sm text-slate-500 dark:text-slate-400">
           Página {tabla.getState().pagination.pageIndex + 1} de{' '}
           {tabla.getPageCount()}
         </span>
@@ -178,7 +181,7 @@ function ProductoList({
             type="button"
             onClick={() => tabla.previousPage()}
             disabled={!tabla.getCanPreviousPage()}
-            className="rounded-lg border px-3 py-1 disabled:opacity-40"
+            className="rounded-lg border border-slate-300 px-3 py-1 text-slate-700 hover:bg-slate-100 disabled:opacity-40 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
           >
             Anterior
           </button>
@@ -187,7 +190,7 @@ function ProductoList({
             type="button"
             onClick={() => tabla.nextPage()}
             disabled={!tabla.getCanNextPage()}
-            className="rounded-lg border px-3 py-1 disabled:opacity-40"
+            className="rounded-lg border border-slate-300 px-3 py-1 text-slate-700 hover:bg-slate-100 disabled:opacity-40 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
           >
             Siguiente
           </button>

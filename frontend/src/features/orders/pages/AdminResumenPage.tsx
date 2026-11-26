@@ -14,12 +14,16 @@ function AdminResumenPage() {
   })
 
   if (isLoading) {
-    return <p className="py-10 text-center">Cargando resumen...</p>
+    return (
+      <p className="py-10 text-center text-slate-600 dark:text-slate-300">
+        Cargando resumen...
+      </p>
+    )
   }
 
   if (isError) {
     return (
-      <p className="py-10 text-center text-red-600">
+      <p className="py-10 text-center text-red-600 dark:text-red-400">
         No se pudo cargar el resumen: {error.message}
       </p>
     )
@@ -55,10 +59,10 @@ function AdminResumenPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-800">
+        <h1 className="text-2xl font-bold text-slate-800 dark:text-white">
           Resumen de pedidos
         </h1>
-        <p className="text-slate-500">
+        <p className="text-slate-500 dark:text-slate-400">
           Indicadores generales de las ventas y los pedidos.
         </p>
       </div>
@@ -67,12 +71,12 @@ function AdminResumenPage() {
         {indicadores.map((indicador) => (
           <div
             key={indicador.titulo}
-            className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
+            className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-800"
           >
-            <p className="text-sm font-medium text-slate-500">
+            <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
               {indicador.titulo}
             </p>
-            <p className="mt-2 text-3xl font-bold text-slate-800">
+            <p className="mt-2 text-3xl font-bold text-slate-800 dark:text-white">
               {indicador.valor}
             </p>
           </div>
@@ -80,20 +84,20 @@ function AdminResumenPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-          <p className="text-sm font-medium text-slate-500">
+        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
             Pedidos realizados hoy
           </p>
-          <p className="mt-2 text-3xl font-bold text-slate-800">
+          <p className="mt-2 text-3xl font-bold text-slate-800 dark:text-white">
             {resumen.pedidos_hoy}
           </p>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-          <p className="text-sm font-medium text-slate-500">
+        <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
             Total vendido
           </p>
-          <p className="mt-2 text-3xl font-bold text-green-700">
+          <p className="mt-2 text-3xl font-bold text-green-700 dark:text-green-400">
             {formatoPrecio(resumen.total_vendido)}
           </p>
         </div>

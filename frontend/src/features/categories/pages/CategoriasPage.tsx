@@ -97,15 +97,15 @@ function CategoriasPage() {
     <section className="space-y-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600">
+          <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
             {esAdmin ? 'Administración' : 'Consulta'}
           </p>
 
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
             Categorías
           </h1>
 
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 text-slate-600 dark:text-slate-400">
             {esAdmin
               ? 'Organizá y administrá las categorías de tus productos.'
               : 'Consultá las categorías de los productos.'}
@@ -126,7 +126,7 @@ function CategoriasPage() {
       {errorOperacion && (
         <div
           role="alert"
-          className="flex items-start justify-between gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+          className="flex items-start justify-between gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300"
         >
           <p>{errorOperacion}</p>
 
@@ -142,8 +142,8 @@ function CategoriasPage() {
       )}
 
       {isLoading && (
-        <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center">
-          <p className="font-medium text-slate-700">
+        <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center dark:border-slate-700 dark:bg-slate-800">
+          <p className="font-medium text-slate-700 dark:text-slate-300">
             Cargando categorías...
           </p>
         </div>
@@ -152,13 +152,13 @@ function CategoriasPage() {
       {isError && (
         <div
           role="alert"
-          className="rounded-2xl border border-red-200 bg-white p-8 text-center"
+          className="rounded-2xl border border-red-200 bg-white p-8 text-center dark:border-red-900 dark:bg-slate-800"
         >
-          <h2 className="text-lg font-bold text-slate-800">
+          <h2 className="text-lg font-bold text-slate-800 dark:text-white">
             No se pudieron cargar las categorías
           </h2>
 
-          <p className="mt-2 text-sm text-slate-600">
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
             Revisá tu conexión e intentá nuevamente.
           </p>
         </div>
@@ -167,11 +167,11 @@ function CategoriasPage() {
       {!isLoading && !isError && (
         <>
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold text-slate-800">
+            <h2 className="text-lg font-bold text-slate-800 dark:text-slate-200">
               Todas las categorías
             </h2>
 
-            <span className="rounded-full bg-slate-200 px-3 py-1 text-sm font-semibold text-slate-700">
+            <span className="rounded-full bg-slate-200 px-3 py-1 text-sm font-semibold text-slate-700 dark:bg-slate-700 dark:text-slate-200">
               {categorias.length}
             </span>
           </div>
@@ -184,7 +184,7 @@ function CategoriasPage() {
           />
 
           {isEliminando && (
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-slate-500 dark:text-slate-400">
               Eliminando categoría...
             </p>
           )}

@@ -33,22 +33,30 @@ function PedidoDetallePage() {
   })
 
   if (!Number.isInteger(id) || id <= 0) {
-    return <p className="text-red-600">El número de pedido no es válido.</p>
+    return (
+      <p className="text-red-600 dark:text-red-400">
+        El número de pedido no es válido.
+      </p>
+    )
   }
 
   if (isLoading) {
-    return <p className="text-center py-10">Cargando pedido...</p>
+    return (
+      <p className="py-10 text-center text-slate-600 dark:text-slate-300">
+        Cargando pedido...
+      </p>
+    )
   }
 
   if (isError) {
     return (
-      <div className="text-center py-10">
-        <p className="text-red-600">
+      <div className="py-10 text-center">
+        <p className="text-red-600 dark:text-red-400">
           No se pudo cargar el pedido: {error.message}
         </p>
         <button
           onClick={() => navigate('/mis-pedidos')}
-          className="mt-4 rounded-lg bg-slate-800 px-4 py-2 text-white"
+          className="mt-4 rounded-lg bg-slate-800 px-4 py-2 text-white hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600"
         >
           Volver a mis pedidos
         </button>
@@ -83,71 +91,93 @@ function PedidoDetallePage() {
     <div className="mx-auto max-w-4xl space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">
+          <h1 className="text-2xl font-bold text-slate-800 dark:text-white">
             Pedido #{pedido.id}
           </h1>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             Realizado el {formatoFecha(pedido.created_at)}
           </p>
         </div>
 
-        <span className="rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
+        <span className="rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 dark:bg-slate-700 dark:text-slate-200">
           {pedido.estado.replace('_', ' ')}
         </span>
       </div>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-6">
-        <h2 className="mb-4 text-lg font-semibold">Información del pedido</h2>
+      <section className="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-800">
+        <h2 className="mb-4 text-lg font-semibold text-slate-800 dark:text-white">
+          Información del pedido
+        </h2>
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <p className="text-sm text-slate-500">Dirección de entrega</p>
-            <p className="font-medium">{pedido.direccion_entrega}</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Dirección de entrega
+            </p>
+            <p className="font-medium text-slate-800 dark:text-slate-200">
+              {pedido.direccion_entrega}
+            </p>
           </div>
 
           <div>
-            <p className="text-sm text-slate-500">Forma de pago</p>
-            <p className="font-medium">{pedido.forma_pago}</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Forma de pago
+            </p>
+            <p className="font-medium text-slate-800 dark:text-slate-200">
+              {pedido.forma_pago}
+            </p>
           </div>
 
           <div>
-            <p className="text-sm text-slate-500">Estado</p>
-            <p className="font-medium">{pedido.estado.replace('_', ' ')}</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Estado
+            </p>
+            <p className="font-medium text-slate-800 dark:text-slate-200">
+              {pedido.estado.replace('_', ' ')}
+            </p>
           </div>
 
           {pedido.notas && (
             <div>
-              <p className="text-sm text-slate-500">Notas</p>
-              <p className="font-medium">{pedido.notas}</p>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Notas
+              </p>
+              <p className="font-medium text-slate-800 dark:text-slate-200">
+                {pedido.notas}
+              </p>
             </div>
           )}
         </div>
       </section>
 
-      <section className="rounded-xl border border-slate-200 bg-white p-6">
-        <h2 className="mb-4 text-lg font-semibold">Productos del pedido</h2>
+      <section className="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-800">
+        <h2 className="mb-4 text-lg font-semibold text-slate-800 dark:text-white">
+          Productos del pedido
+        </h2>
 
-        <div className="divide-y divide-slate-200">
+        <div className="divide-y divide-slate-200 dark:divide-slate-700">
           {pedido.detalles.map((detalle) => (
             <div
               key={detalle.id}
               className="flex flex-wrap items-center justify-between gap-3 py-4"
             >
               <div>
-                <p className="font-medium">{detalle.nombre_producto}</p>
-                <p className="text-sm text-slate-500">
+                <p className="font-medium text-slate-800 dark:text-slate-200">
+                  {detalle.nombre_producto}
+                </p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">
                   {detalle.cantidad} x {formatoPrecio(detalle.precio_unitario)}
                 </p>
               </div>
 
-              <p className="font-semibold">
+              <p className="font-semibold text-slate-800 dark:text-slate-200">
                 {formatoPrecio(detalle.subtotal)}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="mt-4 flex justify-between border-t border-slate-200 pt-4 text-lg font-bold">
+        <div className="mt-4 flex justify-between border-t border-slate-200 pt-4 text-lg font-bold text-slate-800 dark:border-slate-700 dark:text-white">
           <span>Total</span>
           <span>{formatoPrecio(pedido.total)}</span>
         </div>
@@ -156,7 +186,7 @@ function PedidoDetallePage() {
       <div className="flex flex-wrap gap-3">
         <button
           onClick={() => navigate('/mis-pedidos')}
-          className="rounded-lg border border-slate-300 px-5 py-2 font-medium text-slate-700 hover:bg-slate-50"
+          className="rounded-lg border border-slate-300 px-5 py-2 font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
         >
           Volver a mis pedidos
         </button>
@@ -173,13 +203,13 @@ function PedidoDetallePage() {
       </div>
 
       {cancelarMutation.isError && (
-        <p className="text-sm text-red-600">
+        <p className="text-sm text-red-600 dark:text-red-400">
           No se pudo cancelar el pedido. Intentá nuevamente.
         </p>
       )}
 
       {cancelarMutation.isSuccess && (
-        <p className="text-sm text-green-600">
+        <p className="text-sm text-green-600 dark:text-green-400">
           El pedido fue cancelado correctamente.
         </p>
       )}

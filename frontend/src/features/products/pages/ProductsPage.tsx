@@ -97,15 +97,15 @@ function ProductsPage() {
     <section className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600">
+          <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
             {esAdmin ? 'Administración' : 'Consulta'}
           </p>
 
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
             Productos
           </h1>
 
-          <p className="mt-2 max-w-2xl text-slate-600">
+          <p className="mt-2 max-w-2xl text-slate-600 dark:text-slate-400">
             {esAdmin
               ? 'Consultá y administrá los productos registrados en el sistema.'
               : 'Consultá los productos registrados en el sistema.'}
@@ -126,18 +126,18 @@ function ProductsPage() {
       {errorOperacion && (
         <div
           role="alert"
-          className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+          className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300"
         >
           {errorOperacion}
         </div>
       )}
 
       {isLoading ? (
-        <div className="rounded-xl bg-white p-8 text-center text-slate-500">
+        <div className="rounded-xl bg-white p-8 text-center text-slate-500 dark:bg-slate-800 dark:text-slate-400">
           Cargando productos...
         </div>
       ) : isError ? (
-        <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700">
+        <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">
           No se pudieron cargar los productos.
         </div>
       ) : (
@@ -159,7 +159,7 @@ function ProductsPage() {
       )}
 
       {cargando && (
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-slate-500 dark:text-slate-400">
           Guardando producto...
         </p>
       )}

@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
@@ -39,7 +38,7 @@ function Navbar() {
     <header className="border-b border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
       <nav className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <NavLink
-          to="/"
+          to={esAdmin ? '/admin/resumen' : '/'}
           end
           className="text-xl font-bold tracking-tight text-indigo-700 dark:text-indigo-400"
         >
@@ -47,46 +46,48 @@ function Navbar() {
         </NavLink>
 
         <div className="flex flex-wrap items-center gap-2">
-          <NavLink to="/" end className={linkClass}>
-            Catálogo
-          </NavLink>
+          {user && !esAdmin && (
+            <>
+              <NavLink to="/" end className={linkClass}>
+                Catálogo
+              </NavLink>
 
-          <NavLink to="/carrito" className={linkClass}>
-            Carrito
-          </NavLink>
+              <NavLink to="/carrito" className={linkClass}>
+                Carrito
+              </NavLink>
+
+              <NavLink to="/mis-pedidos" className={linkClass}>
+                Mis pedidos
+              </NavLink>
+            </>
+          )}
+
+          {esAdmin && (
+            <>
+              <NavLink to="/admin/resumen" className={linkClass}>
+                Resumen
+              </NavLink>
+
+              <NavLink to="/admin/categorias" className={linkClass}>
+                Categorías
+              </NavLink>
+
+              <NavLink to="/admin/productos" className={linkClass}>
+                Productos
+              </NavLink>
+
+              <NavLink to="/admin/pedidos" className={linkClass}>
+                Pedidos
+              </NavLink>
+
+              <NavLink to="/admin/usuarios" className={linkClass}>
+                Usuarios
+              </NavLink>
+            </>
+          )}
 
           {user && (
             <>
-              {!esAdmin && (
-                <NavLink to="/mis-pedidos" className={linkClass}>
-                  Mis pedidos
-                </NavLink>
-              )}
-
-              {esAdmin && (
-                <>
-                  <NavLink to="/admin/resumen" className={linkClass}>
-                    Resumen
-                  </NavLink>
-
-                  <NavLink to="/admin/categorias" className={linkClass}>
-                    Categorías
-                  </NavLink>
-
-                  <NavLink to="/admin/productos" className={linkClass}>
-                    Productos
-                  </NavLink>
-
-                  <NavLink to="/admin/pedidos" className={linkClass}>
-                    Pedidos
-                  </NavLink>
-
-                  <NavLink to="/admin/usuarios" className={linkClass}>
-                    Usuarios
-                  </NavLink>
-                </>
-              )}
-
               <span className="px-2 text-sm font-medium text-slate-600 dark:text-slate-300">
                 {user.full_name} ({esAdmin ? 'Administrador' : 'Cliente'})
               </span>

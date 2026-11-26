@@ -202,6 +202,6 @@ https://github.com/Luucho-w/FoodStore-TPI_Prog4
 
 ## Video de demostración
 
-**Enlace al video:** REEMPLAZAR_CON_EL_ENLACE_PUBLICO_DEL_VIDEO
+En el siguiente enlace se puede visualizar el video de demostración del proyecto, donde se presenta el funcionamiento general de la aplicación y sus principales funcionalidades.
 
-El video presenta el funcionamiento general de la aplicación y sus principales funcionalidades.
+[Ver video de demostración de FoodStore](https://drive.google.com/file/d/1_u6KRgdUyDLdVlBsFRg5ZcTjR7_DTTz6/view?usp=sharing)
